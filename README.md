@@ -7,24 +7,8 @@ idempotent incremental loading, and visualized in Power BI.
 
 ## Architecture
 
-Raw Parquet Files (NYC TLC)
-│
-▼
-┌─────────────────┐
-│  BRONZE LAYER    │  Raw ingestion, schema preserved, audit columns added
-│  (Delta Table)   │  Incremental MERGE — safe to re-run without duplicates
-└────────┬─────────┘
-▼
-┌─────────────────┐
-│  SILVER LAYER    │  Data quality filtering, derived metrics, zone-name joins
-│  (Delta Table)   │  Assertions on nulls/ranges before write
-└────────┬─────────┘
-▼
-┌─────────────────┐
-│  GOLD LAYER      │  Pre-aggregated tables (hourly demand, daily summary,
-│  (Delta Tables)  │  borough flow, top zones) — optimized for BI queries
-└────────┬─────────┘
-▼
+![Architecture](docs/architecture_diagram.png)
+
 Databricks SQL Warehouse ──► Power BI Dashboard
 
 Orchestrated end-to-end via a Databricks Workflow (3-task DAG), scheduled to
