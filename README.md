@@ -7,7 +7,7 @@ idempotent incremental loading, and visualized in Power BI.
 
 ## Architecture
 
-![Architecture](docs/architecture_diagram.png)
+![Architecture](docs/architecture.png)
 
 Databricks SQL Warehouse ──► Power BI Dashboard
 
